@@ -1,1 +1,1 @@
-web: bin/hubot -a slack
+web: --HUBOT_GOOGLE_CSE_KEY=AIzaSyB5EK54TaM4LqpNYTsOsTxIQll1Na-bzmQ --HUBOT_GOOGLE_CSE_ID=017803415554243765220:upgbmv9uuza bin/hubot -a slack
