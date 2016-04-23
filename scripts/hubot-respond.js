@@ -1,3 +1,19 @@
+// Description:
+//   User interface to set custom responses
+//
+// Commands:
+//   hubot when <phrase> say <response> - Responds to <phrase> with <response> (regex allowed)
+//   hubot when <phrase> shut up - Removes all responses associated with <phrase>
+//
+// Notes:
+//   Regular expressions are allowed. If a response is already defined for a particular phrase
+//   the new response is pushed into a set of responses, which hubot randomly chooses.
+//
+//   In the case that a message matches multiple phrases, hubot will respond with the first
+//   matched response.
+//
+
+
 module.exports = function(robot) {
 	var responseMap;
 
