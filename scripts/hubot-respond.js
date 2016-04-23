@@ -1,6 +1,10 @@
 module.exports = function(robot) {
 	var responseMap = robot.brain.get("hubot-respond-responsemap") || {};
 
+	robot.respond(/responsemap/i, function(response) {
+		response.send(responseMap);
+	});
+
 	robot.respond(/when (.*) say (.*)/i, function(response) {
 		var message = response.match[1];
 		if (responseMap[message]) {
