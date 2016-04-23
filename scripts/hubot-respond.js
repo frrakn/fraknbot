@@ -3,8 +3,11 @@ module.exports = function(robot) {
 
 	robot.respond(/when (.*) say (.*)/i, function(response) {
 		var message = response.match[1];
-		var reply = reply ? reply.push(response.match[2]) : [response.match[2]];
-		responseMap[message] = reply;
+		if (responseMap[message]) {
+			responseMap[message].push(response.match[2]);
+		} else {
+			responseMap[message] = [response.match[2]];
+		}
 		robot.brain.set("hubot-respond-responsemap", responseMap);
 	});
 
