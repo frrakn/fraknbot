@@ -29,6 +29,7 @@ module.exports = function(robot) {
 			var match = regex.exec(message);
 			if(match) {
 				response.send(response.random(responseMap[regexstr]));
+				return
 			}
 		}
 	});
