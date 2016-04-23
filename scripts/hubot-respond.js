@@ -17,7 +17,7 @@ module.exports = function(robot) {
 		robot.brain.set("hubot-respond-responsemap", responseMap);
 	});
 
-	robot.respond(/respond clear brain/i, function(response) {
+	robot.respond(/respond clear/i, function(response) {
 		responseMap = {};
 		robot.brain.set("hubot-respond-responsemap", undefined);
 	});
