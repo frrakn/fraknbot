@@ -2,7 +2,7 @@ module.exports = function(robot) {
 	var responseMap = robot.brain.get("hubot-respond-responsemap") || {};
 
 	robot.respond(/responsemap/i, function(response) {
-		response.send(responseMap);
+		response.send(JSON.stringify(responseMap));
 	});
 
 	robot.respond(/when (.*) say (.*)/i, function(response) {
