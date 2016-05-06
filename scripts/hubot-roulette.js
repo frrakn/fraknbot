@@ -55,12 +55,12 @@ module.exports = function(robot) {
         active = true;
     });
 
-	robot respond(/roulette show/i, function(response) {
-		response.send("Tries: " + config.tries);
-		response.send("Command: " + config.command);
-		response.send("Success: " + config.success);
-		response.send("Fail: " + config.fail);
-	}
+    robot.respond(/roulette show/i, function(response) {
+        response.send("Tries: " + config.tries);
+        response.send("Command: " + config.command);
+        response.send("Success: " + config.success);
+        response.send("Fail: " + config.fail);
+    });
 
     robot.hear(/.*/, function(response) {
         if (active) {
