@@ -32,7 +32,7 @@ module.exports = function(robot) {
     });
 
     robot.respond(/roulette set command (.+)/i, function(response) {
-        config['command'] = new RegExp(response.match[1], 'im');
+        config['command'] = new RegExp(response.match[1], 'ig');
         robot.brain.set(key, config);
     });
 
@@ -81,7 +81,7 @@ module.exports = function(robot) {
     robot.brain.on('loaded', function() {
         config = robot.brain.get(key) || {
             tries: 6,
-            command: /tard me/im,
+            command: /tard me/ig,
             success: "...",
             fail: "TARD"
         };

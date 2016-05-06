@@ -42,7 +42,7 @@ module.exports = function(robot) {
     robot.hear(/.*/, function(response) {
         var message = response.match[0];
         for (var regexstr in responseMap) {
-            var regex = new RegExp(regexstr, 'im');
+            var regex = new RegExp(regexstr, 'ig');
             var match = regex.exec(message);
             if (match) {
                 response.send(response.random(responseMap[regexstr]));
