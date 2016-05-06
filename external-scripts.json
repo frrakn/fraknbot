@@ -7,6 +7,8 @@
   "hubot-pugme",
   "hubot-maps",
   "hubot-redis-brain",
+  "hubot-remind-advanced",
   "hubot-rules",
-  "hubot-shipit"
+  "hubot-shipit",
+  "hubot-wikipedia"
 ]
