@@ -19,7 +19,6 @@ module.exports = function(robot) {
     var responseMap;
 
     robot.respond(/when (.*) say (.*)/i, function(response) {
-        updateResponseMap();
         var message = response.match[1];
         if (responseMap[message]) {
             responseMap[message].push(response.match[2]);
@@ -30,23 +29,20 @@ module.exports = function(robot) {
     });
 
     robot.respond(/when (.*) shut up/i, function(response) {
-        updateResponseMap();
         var message = response.match[1];
         delete responseMap[message];
         robot.brain.set(key, responseMap);
     });
 
     robot.respond(/respond clear/i, function(response) {
-        updateResponseMap();
         responseMap = {};
         robot.brain.set(key, undefined);
     });
 
     robot.hear(/.*/, function(response) {
-        updateResponseMap();
         var message = response.match[0];
         for (var regexstr in responseMap) {
-            var regex = new RegExp(regexstr, 'i');
+            var regex = new RegExp(regexstr, 'im');
             var match = regex.exec(message);
             if (match) {
                 response.send(response.random(responseMap[regexstr]));
@@ -55,9 +51,7 @@ module.exports = function(robot) {
         }
     });
 
-    updateResponseMap = function() {
-        if (!responseMap) {
-            responseMap = robot.brain.get(key) || {};
-        }
-    };
+    robot.brain.on('loaded', function() {
+        responseMap = robot.brain.get(key) || {};
+    });
 };

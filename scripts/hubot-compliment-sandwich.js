@@ -16,13 +16,11 @@ module.exports = function(robot) {
     var compliments;
 
     robot.respond(/compliment add (.*)/i, function(response) {
-        updateCompliments();
         compliments.push(response.match[1]);
         robot.brain.set(key, compliments);
     });
 
     robot.respond(/compliment remove (.*)/i, function(response) {
-        updateCompliments();
         var i = compliments.indexOf(response.match[1])
         if (i != -1) {
             compliments.splice(i, 1);
@@ -31,15 +29,12 @@ module.exports = function(robot) {
     });
 
     robot.respond(/sandwich (.*)/i, function(response) {
-        updateCompliments();
         response.send(response.random(compliments));
         response.send("".concat("But... ", response.match[1]));
         response.send("".concat(response.random(compliments), ", though."));
     });
 
-    updateCompliments = function() {
-        if (!compliments) {
-            compliments = robot.brain.get(key) || ["You smell pretty nice"];
-        }
-    };
+    robot.brain.on('loaded', function() {
+        compliments = robot.brain.get(key) || {};
+    });
 };
