@@ -39,7 +39,7 @@ module.exports = function(robot) {
         robot.brain.set(key, undefined);
     });
 
-    robot.hear(/.*/, function(response) {
+    robot.hear(/.*(?:\s+.*)*/, function(response) {
         var message = response.match[0];
         for (var regexstr in responseMap) {
             var regex = new RegExp(regexstr, 'ig');

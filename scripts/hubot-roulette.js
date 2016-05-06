@@ -62,7 +62,7 @@ module.exports = function(robot) {
         response.send("Fail: " + config.fail);
     });
 
-    robot.hear(/.*/, function(response) {
+    robot.hear(/.*(?:\s+.*)*/, function(response) {
         if (active) {
             var match = config['command'].exec(response.match[0]);
             if (match) {
