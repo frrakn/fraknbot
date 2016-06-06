@@ -64,7 +64,8 @@ module.exports = function(robot) {
 
     robot.hear(/.*(?:\s+.*)*/, function(response) {
         if (active) {
-            var match = config['command'].exec(response.match[0]);
+            currentConfig['command'].lastIndex = 0;
+            var match = currentConfig['command'].exec(response.match[0]);
             if (match) {
                 var outcome = Math.floor(Math.random() * (currentConfig.tries - count));
                 if (outcome < 1) {
