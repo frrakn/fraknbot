@@ -2,15 +2,8 @@
 //   Hits UrbanDictionary API for slang definitions
 //
 // Commands:
-//   hubot roulette set tries - sets total of number of tries before guaranteed failure
-//   hubot roulette set command - sets the trigger word
-//   hubot roulette set success - sets outcome on a successful try
-//   hubot roulette set fail - sets outcome on a failed try
-//   hubot roulette start - begins a game of roulette
+//   hubot what is <query> - looks up <query> on urbandictionary
 //
-// Notes:
-//   Designed to match Russian Roulette. Tries is the capacity of the revolver (with one bullet),
-//   a 'success' is defined as the gun NOT going off.
 
 module.exports = function(robot) {
     var urbanDictionaryAddress = 'http://api.urbandictionary.com/v0/define?term=';
