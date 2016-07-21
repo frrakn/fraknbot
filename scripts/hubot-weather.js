@@ -2,8 +2,8 @@ module.exports = function(robot) {
   var API_KEY = '235b55082e029b34';
   robot.respond(/get weather for (.*), (.*)/, function(response) {
     if (response.match && response.match.length == 3) {
-      var city = response.match[1].replace(/\s+/g, '');
-      var state = response.match[2].replace(/\s+/g, '');
+      var city = response.match[1].replace(/\s+/g, '_');
+      var state = response.match[2].replace(/\s+/g, '_');
       robot.http('http://api.wunderground.com')
         .header('accept', 'application/json')
         .path('api/' + API_KEY + '/conditions/q/' + state + '/' + city + '.json')
